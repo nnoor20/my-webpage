@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noora's Data Visualization Insights</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e6f7ff;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 128, 255, 0.2);
+            max-width: 1200px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: 1fr; /* Single-column for larger image display */
+            gap: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0077cc;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .section {
+            background: #f5faff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .section img {
+            width: 100%;
+            max-width: 800px; /* Sets a maximum width for images */
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #005ea5;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Noora's Data Visualization Lab 4.1</h1>
+
+        <div class="section">
+            <h2>Sales Distribution Across States</h2>
+            <img src="Fill Map.png" alt="Sales Distribution Map">
+            <p><strong>My Take:</strong> Sales patterns seem closely tied to state population sizes. Higher-population states like California and Texas naturally have more sales activity, but states with fewer sales, like Kansas and South Dakota, may still hold untapped potential for targeted growth strategies.</p>
+        </div>
+
+        <div class="section">
+            <h2>Category Sales Comparison</h2>
+            <img src="Bar chart.png" alt="Category Sales Bar Chart">
+            <p><strong>My Take:</strong> Technology sales lead by a significant margin, with Furniture not far behind. This shows how integral tech products are becoming in most markets, while Furniture remains a steady staple in consumer spending.</p>
+        </div>
+
+        <div class="section">
+            <h2>Monthly Sales Trend</h2>
+            <img src="Line Chart.png" alt="Monthly Sales Trend Line Chart">
+            <p><strong>My Take:</strong> November and December sales jumps are clearly influenced by the holiday season, but the September increase could be a result of back-to-school shopping—a trend that’s useful for planning future campaigns around these peaks.</p>
+        </div>
+
+        <div class="section">
+            <h2>Profit vs. Sales Analysis</h2>
+            <img src="Scatter Plot.png" alt="Profit vs Sales Scatter Plot">
+            <p><strong>My Take:</strong> Items like tables and bookcases show high sales but low profitability, indicating they may be loss leaders. It’s a prompt to look at pricing or cost adjustments to boost profitability in these categories.</p>
+        </div>
+
+        <div class="section">
+            <h2>Sales by Shipping Mode</h2>
+            <img src="2ndBarChart.png" alt="Sales by Shipping Mode Bar Chart">
+            <p><strong>My Take:</strong> Standard shipping is the clear favorite among customers, while same-day shipping remains niche. Emphasizing efficiency in Standard shipping could maintain customer satisfaction without needing to overinvest in less-used shipping methods.</p>
+        </div>
+    </div>
+</body>
+</html>
