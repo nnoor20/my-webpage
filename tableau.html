@@ -42,9 +42,17 @@
             text-align: center;
         }
 
-        .section img {
-            width: 100%;
-            max-width: 800px; /* Maximum width for images */
+        .sheet1-img {
+            max-width: 800px; /* Max width for Sheet 1 image */
+            min-width: 600px; /* Minimum width for Sheet 1 image */
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .other-sheets-img {
+            max-width: 500px; /* Max width for other images */
+            min-width: 300px; /* Minimum width for other images */
             height: auto;
             border-radius: 8px;
             margin-top: 15px;
@@ -69,24 +77,24 @@
 <body>
     <div class="container">
         <h1>Noora's Tableau Team Project</h1>
-        <p>This page includes three different Tableau sheets, each offering unique insights.</p>
+        <p>This page includes visualizations analyzing employee performance and efficiency data.</p>
 
-        <div class="section">
-            <h2>Sheet 1: Sales Performance Overview</h2>
-            <img src="Sheet 1.png" alt="Sales Performance Overview">
-            <p><strong>My Take:</strong> This sheet provides an overview of sales performance across various regions and time periods. It highlights trends and patterns in sales growth and identifies key performance areas.</p>
+        <div class="section" id="sheet1-section">
+            <h2>Sheet 1: Average Efficiency Score by Department</h2>
+            <img src="Sheet 1.png" alt="Average Efficiency Score by Department" class="sheet1-img">
+            <p><strong>Description:</strong> This visualization shows the average efficiency score for each department, helping to identify departments with high or low efficiency levels.</p>
         </div>
 
-        <div class="section">
-            <h2>Sheet 2: Customer Demographics Analysis</h2>
-            <img src="Sheet 2.png" alt="Customer Demographics Analysis">
-            <p><strong>My Take:</strong> This sheet focuses on customer demographics, breaking down data by age, gender, and location. It helps understand the composition of the customer base and identify target demographics for marketing efforts.</p>
+        <div class="section" id="sheet2-section">
+            <h2>Sheet 2: Efficiency Score Comparison Across Departments</h2>
+            <img src="Sheet 2.png" alt="Efficiency Score Comparison Across Departments" class="other-sheets-img">
+            <p><strong>Description:</strong> This sheet compares efficiency scores across departments, highlighting any significant outliers that may need further attention.</p>
         </div>
 
-        <div class="section">
-            <h2>Sheet 3: Product Performance Insights</h2>
-            <img src="Sheet 3.png" alt="Product Performance Insights">
-            <p><strong>My Take:</strong> This sheet examines the performance of individual products, providing insights into top-selling items and underperformers. It’s valuable for inventory management and strategic product planning.</p>
+        <div class="section" id="sheet3-section">
+            <h2>Sheet 3: Task Completion Rate Over Deadlines</h2>
+            <img src="Sheet 3.png" alt="Task Completion Rate Over Deadlines" class="other-sheets-img">
+            <p><strong>Description:</strong> This visualization shows task completion rates relative to deadlines, offering insights into time management and workload efficiency.</p>
         </div>
     </div>
 </body>
