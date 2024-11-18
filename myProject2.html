@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Book Categories Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .axis-label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .bar:hover {
+            fill: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chart"></div>
+
+<script>
+// Load your CSV data
+d3.csv("BooksDataset.csv").then(data => {
+    // Preprocess the data
+    const categoryCounts = {};
+    data.forEach(d => {
+        if (d.Category) {
+            d.Category.split(',').forEach(cat => {
+                const category = cat.trim();
+                categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+            });
+        }
+    });
+
+    const formattedData = Object.entries(categoryCounts)
+        .map(([Category, Count]) => ({ Category, Count }))
+        .sort((a, b) => b.Count - a.Count) // Sort by count descending
+        .slice(0, 10); // Show only the top 10 categories
+
+    // Set up chart dimensions and margins
+    const margin = { top: 60, right: 30, bottom: 120, left: 80 };
+    const width = 800 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    // Append SVG element
+    const svg = d3.select("#chart")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Define the scales
+    const x = d3.scaleBand()
+        .domain(formattedData.map(d => d.Category))
+        .range([0, width])
+        .padding(0.2);
+
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(formattedData, d => d.Count)]).nice()
+        .range([height, 0]);
+
+    // Draw bars
+    svg.selectAll(".bar")
+        .data(formattedData)
+        .join("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.Category))
+        .attr("y", d => y(d.Count))
+        .attr("height", d => height - y(d.Count))
+        .attr("width", x.bandwidth())
+        .attr("fill", "purple")
+        .on("mouseover", function () {
+            d3.select(this).attr("fill", "darkmagenta");
+        })
+        .on("mouseout", function () {
+            d3.select(this).attr("fill", "purple");
+        });
+
+    // Add x-axis
+    svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("transform", "rotate(-40)")
+        .style("text-anchor", "end")
+        .style("font-size", "12px");
+
+    // Add y-axis
+    svg.append("g")
+        .attr("class", "y-axis")
+        .call(d3.axisLeft(y).ticks(5));
+
+    // Add axis labels
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", height + 100)
+        .attr("text-anchor", "middle")
+        .attr("class", "axis-label")
+        .text("Book Categories");
+
+    svg.append("text")
+        .attr("x", -height / 2)
+        .attr("y", -60)
+        .attr("text-anchor", "middle")
+        .attr("class", "axis-label")
+        .attr("transform", "rotate(-90)")
+        .text("Number of Books");
+
+    // Add chart title
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -20)
+        .attr("text-anchor", "middle")
+        .attr("class", "axis-label")
+        .style("font-size", "18px")
+        .text("Top 10 Book Categories");
+});
+</script>
+
+</body>
+</html>
